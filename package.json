@@ -1,0 +1,29 @@
+{
+  "name": "FinancialOk",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "react-native run-android",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.6.1",
+    "native-base": "^2.8.1",
+    "react-native": "0.57.7",
+    "react-navigation": "^3.0.7",
+    "react-native-swiper": "^1.5.14",
+    "lottie-react-native": "^2.5.10",
+    "react-native-firebase": "^5.1.1",
+    "react-native-gesture-handler": "^1.0.10"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.50.0",
+    "react-test-renderer": "16.6.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
