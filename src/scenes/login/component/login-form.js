@@ -1,32 +1,66 @@
 import React, {Component} from 'react';
 import {TextInput, TouchableOpacity, StyleSheet, StatusBar} from "react-native";
 import {View, Form, Item, Input, Label, Text} from "native-base";
+import firebase from "react-native-firebase";
 
 
 class LoginForm extends Component {
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            password: "",
+            userEmail: "",
+            isAuthenticated: false,
+            registerUser: false,
+            // crear variable traida de datto para velidar si ya ingreso por primera vex
+        }
+    }
+
+    anonimousLogin = () => {
+
+        firebase.auth().signInAnonymously()
+            .then(() => {
+                this.setState({
+                    isAuthenticated: true,
+                });
+            });
+
+
+    };
+
     render() {
         return (
             <View style={styles.container}>
                 <StatusBar barStyle="light-content"/>
-                <TextInput style = {styles.input}
-                           autoCapitalize="none"
-                           onSubmitEditing={() => this.passwordInput.focus()}
-                           autoCorrect={false}
-                           keyboardType='email-address'
-                           returnKeyType="next"
-                           placeholder= "Usuario"
-                           placeholderTextColor='rgba(225,225,225,0.7)'/>
+                {  (this.state.registerUser ) ? (
+                    <TextInput style = {styles.input}
+                               autoCapitalize="none"
+                               onSubmitEditing={() => this.password.focus()}
+                               autoCorrect={false}
+                               keyboardType='email-address'
+                               returnKeyType="next"
+                               placeholder= "Usuario"
+                               placeholderTextColor='rgba(225,225,225,0.7)'
+                               onChangeText={ input =>
+                                   this.setState({userEmail: input }) } >
+                        
+                    </TextInput>
+                             <TextInput style = {styles.input}
+                                returnKeyType="go" ref={(input)=> this.password = input}
+                                placeholder='Password'
+                                placeholderTextColor='rgba(225,225,225,0.7)'
+                                secureTextEntry
+                                onChangeText={ input =>
+                                this.setState({password: input }) } />
 
-                <TextInput style = {styles.input}
-                           returnKeyType="go" ref={(input)=> this.passwordInput = input}
-                           placeholder='Password'
-                           placeholderTextColor='rgba(225,225,225,0.7)'
-                           secureTextEntry/>
+                                <TouchableOpacity onPress={() => this.anonimousLogin()} style={styles.buttonContainer}
+                                >
+                                <Text  style={styles.buttonText}>LOGIN</Text>
+                                </TouchableOpacity>
+                }
 
-                <TouchableOpacity onPress={() => this.props.navigation.navigate("Home")} style={styles.buttonContainer}
-                >
-                    <Text  style={styles.buttonText}>LOGIN</Text>
-                </TouchableOpacity>
+
             </View>
         );
     }

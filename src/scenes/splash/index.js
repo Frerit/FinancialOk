@@ -30,13 +30,7 @@ class Splash extends Component {
             }
         });
 
-        firebase.auth().signInAnonymously()
-            .then(() => {
-                this.setState({
-                    isAuthenticated: true,
-                });
-            });
-         setTimeout(() => {
+        setTimeout(() => {
             if (!this.state.isAuthenticated) {
                  this.props.navigation.navigate("Login")
              }
