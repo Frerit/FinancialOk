@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "236825189714",
+    "firebase_url": "https://fiancialok.firebaseio.com",
+    "project_id": "fiancialok",
+    "storage_bucket": "fiancialok.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236825189714:android:d1ae6e7ef650b6ed",
+        "android_client_info": {
+          "package_name": "com.financialok"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236825189714-cupm25fvgok2nj73qnfjosje8dsgdjla.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUH_CxacPMpaaQRq-TG_7jQiqs1vxIY4M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

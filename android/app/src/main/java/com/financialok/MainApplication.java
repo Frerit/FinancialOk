@@ -11,6 +11,11 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
+// Firebase
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import io.invertase.firebase.database.RNFirebaseDatabasePackage;
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,8 +32,13 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNGestureHandlerPackage(),
+            new LottiePackage(),
             new RNFirebasePackage(),
-            new LottiePackage()
+            new RNFirebaseAuthPackage(),
+            new RNFirebaseDatabasePackage(),
+            new RNFirebaseFirestorePackage()
+
+
       );
     }
 

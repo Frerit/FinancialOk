@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
 import LottieView from 'lottie-react-native';
 import {View, StyleSheet,StatusBar, NetInfo, Alert} from "react-native";
-
+import firebase from 'react-native-firebase';
 
 
 class Splash extends Component {
+    constructor() {
+        super();
+        this.state = {
+            isAuthenticated: false,
+        };
+    }
     componentDidMount() {
         this.animation.play();
         NetInfo.getConnectionInfo().then((connectionInfo) => {
-            if (connectionInfo.type == 'none') {
+            if (connectionInfo.type === 'none') {
                 Alert.alert(
                     'Error Conexion',
                     'Parece que no tienes conecion, ' +
@@ -23,6 +29,19 @@ class Splash extends Component {
                 )
             }
         });
+
+        firebase.auth().signInAnonymously()
+            .then(() => {
+                this.setState({
+                    isAuthenticated: true,
+                });
+            });
+         setTimeout(() => {
+            if (!this.state.isAuthenticated) {
+                 this.props.navigation.navigate("Login")
+             }
+        }, 2000);
+
     }
     render() {
         return (
