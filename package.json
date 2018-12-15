@@ -10,10 +10,12 @@
   "dependencies": {
     "lottie-react-native": "^2.5.10",
     "native-base": "^2.8.1",
+    "prop-types": "^15.6.2",
     "react": "16.6.1",
     "react-native": "0.57.7",
     "react-native-firebase": "^5.1.1",
     "react-native-gesture-handler": "^1.0.10",
+    "react-native-snap-carousel": "^3.7.5",
     "react-native-swiper": "^1.5.14",
     "react-navigation": "^3.0.7",
     "react-navigation-redux-helpers": "^2.0.8",

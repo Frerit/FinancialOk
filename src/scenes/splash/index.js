@@ -41,8 +41,9 @@ class Splash extends Component {
         return (
             <View style={styles.container}>
                 <StatusBar
-                    backgroundColor="#4aade5"
+                    backgroundColor="#FFF"
                     translucent
+                    barStyle="light-content"
                 />
                 <View style={styles.conte_load} >
                     <LottieView
@@ -60,7 +61,7 @@ export default Splash;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#4aade5',
+        backgroundColor: '#FFF',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
