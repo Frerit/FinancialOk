@@ -2,15 +2,20 @@ import React, {Component} from 'react';
 import LottieView from 'lottie-react-native';
 import {View, StyleSheet,StatusBar, NetInfo, Alert} from "react-native";
 import firebase from 'react-native-firebase';
+import DeviceInfo from 'react-native-device-info';
 
+const ref = firebase.firestore().collection('OK_EQUIPOS');
 
 class Splash extends Component {
     constructor() {
         super();
+        this.ref = firebase.firestore().collection('OK_EQUIPOS');
         this.state = {
             isAuthenticated: false,
         };
     }
+
+
     componentDidMount() {
         this.animation.play();
         NetInfo.getConnectionInfo().then((connectionInfo) => {
@@ -23,18 +28,34 @@ class Splash extends Component {
                     [
                         {text: 'No mostrar', onPress: () => console.log('Ask me later pressed')},
                         {text: 'Cerrar', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                        {text: 'OK', onPress: () => {
+                            this.props.navigation.navigate("Login")
+                        }},
                     ],
                     { cancelable: false }
                 )
             }
         });
+        this.ref.doc(DeviceInfo.getUniqueID()).set({
 
-        setTimeout(() => {
-            if (!this.state.isAuthenticated) {
-                 this.props.navigation.navigate("Login")
-             }
-        }, 2000);
+            brand: DeviceInfo.getBrand(),
+            deviceCountry: DeviceInfo.getDeviceCountry(),
+            deviceId: DeviceInfo.getDeviceId(),
+            deviceLocale: DeviceInfo.getDeviceLocale(),
+            systemVersion: DeviceInfo.getSystemVersion(),
+            uniqueId: DeviceInfo.getUniqueID(),
+            firstOpen: new Date().toDateString()
+
+        }).then(respo => {
+
+            console.log(respo);
+            this.props.navigation.navigate("Login")
+
+        }).catch(err => {
+
+          alert(err);
+
+        });
 
     }
     render() {

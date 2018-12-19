@@ -4207,6 +4207,11 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
+react-native-device-info@^0.24.3:
+  version "0.24.3"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.24.3.tgz#f15eff8d09fe418eaf5e7c89ddaabbc5ed718fd7"
+  integrity sha512-usW00Wk6DoXH1eRSMt07j0uYvuka3SIEnJ9girlddAacyqwfa1QMVTN4eYmtaBzuMd/avhis8iHZQ3cLaR9CMA==
+
 react-native-drawer@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-native-drawer/-/react-native-drawer-2.5.0.tgz#022cba5c0516126a9fc9cce3185cb46c644b51c4"

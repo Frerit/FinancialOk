@@ -13,6 +13,7 @@
     "prop-types": "^15.6.2",
     "react": "16.6.1",
     "react-native": "0.57.7",
+    "react-native-device-info": "^0.24.3",
     "react-native-firebase": "^5.1.1",
     "react-native-gesture-handler": "^1.0.10",
     "react-native-snap-carousel": "^3.7.5",

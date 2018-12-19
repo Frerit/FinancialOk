@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Dimensions, StyleSheet, Text}  from "react-native";
+import {View, Dimensions, StyleSheet, Text, Image}  from "react-native";
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import LottieView from "lottie-react-native";
 
@@ -13,18 +13,19 @@ function wp (percentage) {
 
 const slideHeight = viewportHeight * 0.5;
 const slideWidth = wp(70);
-const itemHorizontalMargin = wp(20);
+const itemHorizontalMargin = wp(10);
 
 export const sliderWidth = viewportWidth;
 export const itemWidth = slideWidth + itemHorizontalMargin * 2;
 
 
-const makeExample = (name, getJson, width) => ({ name, getJson, width });
+const makeExample = (name, image, width) => ({ name, image, width });
 
 const ENTRIES1 = [
-    makeExample('Hamburger Arrow (200 px)', () => require('../../../assets/sloop'), 200),
-    makeExample('Hamburger Arrow (200 px)', () => require('../../../assets/sloop'), 200),
-    makeExample('Hamburger Arrow (200 px)', () => require('../../../assets/sloop'), 200),
+    makeExample('Hamburger Arrow (200 px)', require('../../../assets/F1.png'), viewportWidth),
+    makeExample('Hamburger Arrow (200 px)', require('../../../assets/F2.png'), viewportWidth),
+    makeExample('Hamburger Arrow (200 px)', require('../../../assets/F3.png'), viewportWidth),
+    makeExample('Hamburger Arrow (200 px)', require('../../../assets/F4.png'), viewportWidth),
 ];
 
 class CarouselView extends Component {
@@ -35,7 +36,7 @@ class CarouselView extends Component {
         this.state = {
             slider1ActiveSlide: 1,
             example: ENTRIES1,
-            duration: 3000,
+            duration: 6000,
             isPlaying: true,
             isInverse: false,
             loop: true,
@@ -45,18 +46,13 @@ class CarouselView extends Component {
 
     _renderItemWithParallax ({item, index}, parallaxProps) {
         return (
-            <View style={ styles.contentLotie }>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <LottieView
-                        ref={animation => { this.animation = animation;} }
-                        autoPlay
-                        style={[item.width && { width: item.width }]}
-                        source={item.getJson()}
-                        loop
-                        enableMergePathsAndroidForKitKatAndAbove
-                    />
-                </View>
-            </View>
+             <View style={styles.svgImage} >
+                <Image source={item.image}
+                       style={{ width: sliderWidth, height: slideHeight }}
+                       resizeMode='center'
+                />
+                 <Text>{ item.name }</Text>
+             </View>
         );
     }
 
@@ -75,7 +71,7 @@ class CarouselView extends Component {
                     itemWidth={itemWidth}
                     autoplay={true}
                     autoplayDelay={500}
-                    autoplayInterval={3000}
+                    autoplayInterval={10000}
                     onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index }) }
                 />
                 <Pagination
@@ -98,20 +94,16 @@ class CarouselView extends Component {
 export default CarouselView;
 
 const styles = StyleSheet.create({
-    svgImage: {
-        width: 100,
-        height: slideHeight - 20,
-    },
-    contentLotie :{
-        width: slideWidth - 50,
-        height: slideHeight,
-        backgroundColor: '#efecff',
-    },
     paginationDot: {
         width: 8,
         height: 8,
         borderRadius: 4,
         marginHorizontal: 8
+    },
+    svgImage: {
+        flex: 1,
+        marginTop: 20,
+        alignItems: 'center'
     },
     paginationContainer: {
         paddingVertical:3,
